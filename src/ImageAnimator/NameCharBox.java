@@ -11,7 +11,7 @@ public class NameCharBox extends DrawableAsset {
     
     // POSISI TEKS (tetap fix)
     private static final int TEXT_X = 40;   // 67 + 30 = 97
-    private static final int TEXT_Y = 620;  // 862 + 50 = 912
+    private static final int TEXT_Y = 583;  // 862 + 50 = 912
     
     public interface NameAnimationListener {
         void onNameTypingComplete();

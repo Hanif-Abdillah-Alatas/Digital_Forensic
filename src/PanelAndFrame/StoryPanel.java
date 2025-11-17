@@ -69,37 +69,39 @@ public class StoryPanel extends JPanel implements
         setOpaque(false);
         
         // --- MOUSE LISTENER (PERBAIKAN UTAMA) ---
+        // KODE BARU (PERBAIKAN)
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // 1. Cek Tombol Dulu (Agar bisa diklik)
-                if (currentManager != null && typingAnimator.isTypingComplete()) {
-                    currentManager.checkAllClicks(e.getPoint(), getWidth(), getHeight());
-                    // Opsional: return; jika tidak ingin skip typing saat klik tombol
-                    
-                    currentManager.checkAllClicks(e.getPoint(), getWidth(), getHeight());
-                }
-                
-                // 2. Logic Skip Animasi Teks
                 System.out.println("🖱️ Mouse clicked");
+
+                // PRIORITAS 1: Jika teks sedang mengetik, skip teksnya.
                 if (!typingAnimator.isTypingComplete()) {
-                                    typingAnimator.skipTyping();
-                                } else if (!nameCharBox.isNameTypingComplete()) {
-                                    nameCharBox.skipTyping();
-                                } else {
-                                    // 3. LOGIKA BARU: KLIK UNTUK LANJUT (Jika teks selesai & tidak ada tombol)
-                                    // Jika tidak ada manager tombol, ATAU manager ada tapi tidak diklik (klik di area kosong)
-                                    // Kita cek apakah scene ini punya "nextScene"
-                                    if (currentScene != null && currentScene.nextScene != null && !currentScene.nextScene.isEmpty()) {
-                                        // Cek apakah scene ini MODE TOMBOL? Kalau mode tombol, jangan bolehin klik sembarang buat skip
-                                        if (currentScene.managerType == null) {
-                                            System.out.println("⏩ Lanjut ke scene berikutnya: " + currentScene.nextScene);
-                                            onSceneChangeRequest(currentScene.nextScene);
-                                        }
-                                    }
-                                }
+                    typingAnimator.skipTyping();
+                } 
+
+                // PRIORITAS 2: Jika nama sedang mengetik, skip namanya.
+                else if (!nameCharBox.isNameTypingComplete()) {
+                    nameCharBox.skipTyping();
+                } 
+
+                // PRIORITAS 3: Jika teks selesai DAN ada tombol, cek klik tombol.
+                else if (currentManager != null) {
+                    // Karena typing complete, kita bisa cek tombol
+                    currentManager.checkAllClicks(e.getPoint(), getWidth(), getHeight());
+                } 
+
+                // PRIORITAS 4: Jika semua selesai DAN TIDAK ada tombol, cek lanjut scene.
+                else {
+                    if (currentScene != null && currentScene.nextScene != null && !currentScene.nextScene.isEmpty()) {
+                        // Cek apakah scene ini MODE TOMBOL? Kalau mode tombol, jangan bolehin klik sembarang buat skip
+                        if (currentScene.managerType == null) {
+                            System.out.println("⏩ Lanjut ke scene berikutnya: " + currentScene.nextScene);
+                            onSceneChangeRequest(currentScene.nextScene);
+                        }
+                    }
+                }
             }
-                            
         });
         
         // Listener Hover Tombol
