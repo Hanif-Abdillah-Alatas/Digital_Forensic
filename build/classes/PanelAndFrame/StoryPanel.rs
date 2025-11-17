@@ -1,4 +1,0 @@
-PanelAndFrame.StoryPanel$1
-PanelAndFrame.StoryPanel$2
-PanelAndFrame.StaticAsset
-PanelAndFrame.StoryPanel
