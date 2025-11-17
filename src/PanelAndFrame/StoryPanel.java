@@ -203,9 +203,11 @@ public class StoryPanel extends JPanel implements
         // Kalau dialog box di-hide, biasanya teks juga tidak perlu di-set/animasi
         if (!scene.hideDialogBox) {
             setDialogText(scene.dialog);
+            startDialogAnimation();
         } else {
             // Hentikan animasi teks jika dialog box hilang
             typingAnimator.skipTyping(); 
+            stopDialogAnimation();
         }
         
         // RESET MANAGER LAMA
