@@ -17,12 +17,12 @@ public class GameScene {
     public boolean hideCharacter;    // True = Sembunyikan karakter
     public boolean hideNameBox;      // True = Sembunyikan kotak nama
     
-    public List<GameChoice> choices;
+
     public List<String> requiredEvidence;
     public List<String> collectibleEvidence;
     
     public GameScene() {
-        this.choices = new ArrayList<>();
+
         this.requiredEvidence = new ArrayList<>();
         this.collectibleEvidence = new ArrayList<>();
     }
