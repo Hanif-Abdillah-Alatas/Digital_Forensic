@@ -1,4 +1,3 @@
-
 package buttons;
 import PanelAndFrame.StoryPanel;
 
@@ -10,7 +9,6 @@ public class PeopleChoice1 extends ChoiceManager {
     
     @Override
     protected void setupButtons() {
-        // Setup 3 tombol dengan gambar berbeda
         addButton("hanif");
         addButton("nayla"); 
         addButton("alatas");
@@ -19,7 +17,6 @@ public class PeopleChoice1 extends ChoiceManager {
     
     @Override
     protected void handleButtonClick(ChoiceButton clickedButton) {
-        // Logic spesifik untuk 3 tombol
         int buttonIndex = choiceButtons.indexOf(clickedButton);
         if (panelListener instanceof StoryPanel) {
             StoryPanel panel = (StoryPanel) panelListener;
@@ -40,9 +37,5 @@ public class PeopleChoice1 extends ChoiceManager {
         }
     }
     
-    @Override
-    public void onChoiceClicked() {
-        // Bisa custom logic di sini untuk 3 tombol
-        panelListener.onChoiceClicked();
-    }
+    // METHOD onChoiceClicked YANG LAMA DIHAPUS KARENA TIDAK PERLU
 }

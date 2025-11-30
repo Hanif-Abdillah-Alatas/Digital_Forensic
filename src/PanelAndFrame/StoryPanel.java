@@ -26,15 +26,9 @@ import text.FontManager;
 import text.TypingAnimator;
 import engine.GameScene;
 import engine.GameStateManager;
-import engine.DetectiveCharacter;
-import engine.DigitalEvidence;
 import engine.SuspectCharacter;
 
-class StaticAsset extends DrawableAsset {
-    public StaticAsset(String imageKey) {
-        super(imageKey);
-    }
-}
+// [HAPUS KELAS StaticAsset DISINI KARENA TIDAK DIPAKAI]
 
 public class StoryPanel extends JPanel implements 
     TypingAnimator.TypingCompleteListener,
@@ -46,17 +40,17 @@ public class StoryPanel extends JPanel implements
     private GameScene currentScene;
     
     // Komponen Visual
-    private StaticAsset background;
-    private StaticAsset fullScene; 
+    // [UBAH TIPE DATA JADI DrawableAsset]
+    private DrawableAsset background; 
+    private DrawableAsset fullScene; 
+    
     private DialogBoxAnimator dialogBox;
     private NameCharBox nameCharBox;
     private TypingAnimator typingAnimator;
     
-    // HANYA PAKAI SATU MANAGER
     private ChoiceManager currentManager; 
     
     public StoryPanel() {
-        // Setup komponen
         this.gameState = new GameStateManager();
         setupGameWorld();
         
@@ -64,27 +58,22 @@ public class StoryPanel extends JPanel implements
         nameCharBox = new NameCharBox(this);
         typingAnimator = new TypingAnimator(this, "");
         
-        // Timer repaint
         new Timer(100, e -> repaint()).start();
         setOpaque(false);
         
-        // --- MOUSE LISTENER (PERBAIKAN UTAMA) ---
         addMouseListener(new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
-            // 1. Cek Tombol Dulu
             if (currentManager != null && typingAnimator.isTypingComplete()) {
                 currentManager.checkAllClicks(e.getPoint(), getWidth(), getHeight());
-                return; // Tambahkan return agar tidak lanjut ke logika skip typing jika tombol diklik
+                return;
             }
 
-            // 2. Logic Skip Animasi Teks
             if (!typingAnimator.isTypingComplete()) {
                 typingAnimator.skipTyping();
             } else if (!nameCharBox.isNameTypingComplete()) {
                 nameCharBox.skipTyping();
             } else {
-                // 3. Logika Klik untuk Lanjut
                 if (currentScene != null && currentScene.nextScene != null && !currentScene.nextScene.isEmpty()) {
                     if (currentScene.managerType == null) {
                         onSceneChangeRequest(currentScene.nextScene);
@@ -94,7 +83,6 @@ public class StoryPanel extends JPanel implements
         }
     });
         
-        // Listener Hover Tombol
         addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
@@ -103,24 +91,14 @@ public class StoryPanel extends JPanel implements
                 }
             }
         });
-
-        System.out.println("✅ StoryPanel setup complete");
     }
     
     private void setupGameWorld() {
-        // 1. Setup Detective & Evidence (Kode Lama)
-        gameState.registerCharacter(new DetectiveCharacter("det_syauqy", "syauqy-dialog"));
-        gameState.registerEvidence(new DigitalEvidence("laptop_evidence", "laptop"));
-
-        // 2. TAMBAHAN BARU: Register Tersangka (Agar bisa diset guilty/innocent)
-        // ID Karakter harus cocok dengan yang nanti ditulis di setGuilty JSON
         gameState.registerCharacter(new SuspectCharacter("hanif", "hanif"));
         gameState.registerCharacter(new SuspectCharacter("nayla", "nayla"));
         gameState.registerCharacter(new SuspectCharacter("alatas", "alatas"));
         gameState.registerCharacter(new SuspectCharacter("labib", "labib"));
         gameState.registerCharacter(new SuspectCharacter("dafa", "dafa"));
-
-        System.out.println("✅ Semua karakter telah didaftarkan!");
     }
     
     public void loadStory(List<GameScene> story) {
@@ -152,60 +130,46 @@ public class StoryPanel extends JPanel implements
     public void showScene(GameScene scene) {
         this.currentScene = scene;
         
-        // --- LOGIKA BARU: SET TERSANGKA DARI JSON ---
         if (scene.setGuilty != null) {
-            // Ambil karakter dari GameStateManager
             engine.GameCharacter character = gameState.getCharacter(scene.setGuilty);
-
-            // Cek apakah dia SuspectCharacter?
             if (character instanceof SuspectCharacter) {
                 ((SuspectCharacter) character).setGuilty(true);
-                System.out.println("⚖️ KEPUTUSAN: " + scene.setGuilty + " ditetapkan sebagai PELAKU!");
-            } else {
-                System.out.println("⚠️ Karakter " + scene.setGuilty + " tidak ditemukan atau bukan tersangka.");
             }
         }
         
         try {
             if (scene.background != null) {
-                background = new StaticAsset(scene.background);
+                // [GANTI StaticAsset JADI DrawableAsset]
+                background = new DrawableAsset(scene.background);
             }
             
-            // 2. Update Karakter (Cek Flag hideCharacter)
             if (scene.hideCharacter) {
-                fullScene = null; // Hapus karakter dari layar
+                fullScene = null;
             } else if (scene.characterImage != null) {
-                fullScene = new StaticAsset(scene.characterImage);
+                // [GANTI StaticAsset JADI DrawableAsset]
+                fullScene = new DrawableAsset(scene.characterImage);
             }
-            // Jika tidak hide dan tidak ada image baru, biarkan yang lama (opsional)
-            // Atau paksa null jika mau reset setiap scene:
-            // else { fullScene = null; } 
             
         } catch (Exception e) {
             System.out.println("Gagal load gambar: " + e.getMessage());
         }
         
-        // 3. Update Nama (Cek Flag hideNameBox)
         if (scene.hideNameBox || scene.characterName == null) {
             hideCharacterName();
         } else {
             showCharacterName(scene.characterName);
         }
         
-        // Kalau dialog box di-hide, biasanya teks juga tidak perlu di-set/animasi
         if (!scene.hideDialogBox) {
             setDialogText(scene.dialog);
             startDialogAnimation();
         } else {
-            // Hentikan animasi teks jika dialog box hilang
             typingAnimator.skipTyping(); 
             stopDialogAnimation();
         }
         
-        // RESET MANAGER LAMA
         currentManager = null;
 
-        // PILIH MANAGER BERDASARKAN KODE DI JSON
         if (scene.managerType != null) {
             switch (scene.managerType) {
                 case "THREE_CHOICE": currentManager = new ThreeChoiceManager(this); break;
@@ -219,7 +183,6 @@ public class StoryPanel extends JPanel implements
             }
         }
         
-        // Sembunyikan tombol sampai teks selesai
         if (currentManager != null) {
             currentManager.showAll(false);
         }
@@ -229,8 +192,6 @@ public class StoryPanel extends JPanel implements
     
     @Override
     public void onTypingComplete() {
-        System.out.println("✅ Dialog typing complete");
-        // TAMPILKAN TOMBOL SETELAH MENGETIK SELESAI
         if (currentManager != null) {
             currentManager.showAll(true);
         }
@@ -247,23 +208,22 @@ public class StoryPanel extends JPanel implements
         g.fillRect(0, 0, w, h);
 
         if (background != null) background.draw(g, 0, 0, w, h);
-        // 2. Draw Karakter (Hanya jika tidak di-hide)
+        
         if (fullScene != null && (currentScene == null || !currentScene.hideCharacter)) {
             fullScene.draw(g, 0, 0, w, h);
         }
-        // 3. Draw Dialog Box & Name Box (Hanya jika tidak di-hide)
+        
         if (currentScene == null || !currentScene.hideDialogBox) {
             if (dialogBox.getCurrentDialogBox() != null) {
                 g.drawImage(dialogBox.getCurrentDialogBox(), 0, 0, w, h, null);
             }
-            drawText(g); // Teks hanya digambar kalau box-nya ada
+            drawText(g);
         }
         
         if (currentScene == null || !currentScene.hideNameBox) {
             nameCharBox.draw(g, w, h);
         }
 
-        // GAMBAR TOMBOL (HANYA CURRENT MANAGER)
         if (currentManager != null && typingAnimator.isTypingComplete()) {
             currentManager.showAll(true);
             currentManager.drawAll(g, w, h);
@@ -318,12 +278,10 @@ public class StoryPanel extends JPanel implements
         dialogBox.stopAnimation();
     }
     
-
     public GameStateManager getGameState() {
         return gameState;
     }
     public GameScene getCurrentScene() {
-    return currentScene;
-}
-
+        return currentScene;
+    }
 }

@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 /**
  * Kelas dasar untuk semua aset yang memiliki gambar dan dapat digambar.
  */
-public abstract class DrawableAsset {
+public class DrawableAsset {
     protected BufferedImage image;
     
     // Konstruktor harus mengambil kunci gambar
