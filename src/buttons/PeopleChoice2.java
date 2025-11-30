@@ -41,9 +41,4 @@ public class PeopleChoice2 extends ChoiceManager {
         }
     }
     
-    @Override
-    public void onChoiceClicked() {
-        // Bisa custom logic di sini untuk 3 tombol
-        panelListener.onChoiceClicked();
-    }
 }
