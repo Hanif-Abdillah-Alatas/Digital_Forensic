@@ -70,37 +70,29 @@ public class StoryPanel extends JPanel implements
         
         // --- MOUSE LISTENER (PERBAIKAN UTAMA) ---
         addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                // 1. Cek Tombol Dulu (Agar bisa diklik)
-                if (currentManager != null && typingAnimator.isTypingComplete()) {
-                    currentManager.checkAllClicks(e.getPoint(), getWidth(), getHeight());
-                    // Opsional: return; jika tidak ingin skip typing saat klik tombol
-                    
-                    currentManager.checkAllClicks(e.getPoint(), getWidth(), getHeight());
-                }
-                
-                // 2. Logic Skip Animasi Teks
-                System.out.println("🖱️ Mouse clicked");
-                if (!typingAnimator.isTypingComplete()) {
-                                    typingAnimator.skipTyping();
-                                } else if (!nameCharBox.isNameTypingComplete()) {
-                                    nameCharBox.skipTyping();
-                                } else {
-                                    // 3. LOGIKA BARU: KLIK UNTUK LANJUT (Jika teks selesai & tidak ada tombol)
-                                    // Jika tidak ada manager tombol, ATAU manager ada tapi tidak diklik (klik di area kosong)
-                                    // Kita cek apakah scene ini punya "nextScene"
-                                    if (currentScene != null && currentScene.nextScene != null && !currentScene.nextScene.isEmpty()) {
-                                        // Cek apakah scene ini MODE TOMBOL? Kalau mode tombol, jangan bolehin klik sembarang buat skip
-                                        if (currentScene.managerType == null) {
-                                            System.out.println("⏩ Lanjut ke scene berikutnya: " + currentScene.nextScene);
-                                            onSceneChangeRequest(currentScene.nextScene);
-                                        }
-                                    }
-                                }
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            // 1. Cek Tombol Dulu
+            if (currentManager != null && typingAnimator.isTypingComplete()) {
+                currentManager.checkAllClicks(e.getPoint(), getWidth(), getHeight());
+                return; // Tambahkan return agar tidak lanjut ke logika skip typing jika tombol diklik
             }
-                            
-        });
+
+            // 2. Logic Skip Animasi Teks
+            if (!typingAnimator.isTypingComplete()) {
+                typingAnimator.skipTyping();
+            } else if (!nameCharBox.isNameTypingComplete()) {
+                nameCharBox.skipTyping();
+            } else {
+                // 3. Logika Klik untuk Lanjut
+                if (currentScene != null && currentScene.nextScene != null && !currentScene.nextScene.isEmpty()) {
+                    if (currentScene.managerType == null) {
+                        onSceneChangeRequest(currentScene.nextScene);
+                    }
+                }
+            }
+        }
+    });
         
         // Listener Hover Tombol
         addMouseMotionListener(new MouseAdapter() {

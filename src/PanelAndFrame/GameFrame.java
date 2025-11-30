@@ -1,14 +1,9 @@
 package PanelAndFrame;
 
-
-import PanelAndFrame.OpeningPanel;
-import PanelAndFrame.StoryPanel;
 import ImageAnimator.ImageManager;
 import text.FontManager;
 import javax.swing.*;
 import java.awt.*;
-
-//tambahan
 import engine.GameScene;
 import engine.StoryLoader;
 import java.util.List;
@@ -29,17 +24,16 @@ public class GameFrame extends JFrame {
         GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         device.setFullScreenWindow(this);
         
-        // Setup CardLayout untuk switching panel
+        // Setup CardLayout
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
         
-        //Inisialisasi panel
+        // Inisialisasi panel
         OpeningPanel openingPanel = new OpeningPanel(this);
-        storyPanel = new StoryPanel(); // (Panel A)
+        storyPanel = new StoryPanel(); 
         
-        // Tambahkan panel-panel MENGGUNAKAN VARIABEL YANG SUDAH ADA
-        mainPanel.add(openingPanel, "opening"); // Gunakan variabel openingPanel
-        mainPanel.add(storyPanel, "Story");     // Gunakan variabel storyPanel (Panel A)
+        mainPanel.add(openingPanel, "opening");
+        mainPanel.add(storyPanel, "Story");
         
         add(mainPanel);
         
@@ -47,27 +41,14 @@ public class GameFrame extends JFrame {
         cardLayout.show(mainPanel, "opening");
     }
     
-    // Method untuk beralih ke Story panel
-public void switchToStory() {
-        // 1. Load data dari JSON
+    public void switchToStory() {
+        // 1. Load data default
         List<GameScene> story = StoryLoader.loadStory("contoh.json");
         
-        // 2. Masukkan data ke StoryPanel (Gunakan loadStory, bukan startGame)
+        // 2. Masukkan data ke StoryPanel yang sudah ada
         storyPanel.loadStory(story); 
         
         // 3. Tampilkan Panel
         cardLayout.show(mainPanel, "Story");
-    }
-
-    // Method overload untuk story specific (opsional)
-    public void switchToStory(String storyFile) {
-        StoryPanel storyPanel = new StoryPanel();
-        mainPanel.add(storyPanel, "story");
-        
-        // Load story dari file
-        List<GameScene> story = StoryLoader.loadStory(storyFile);
-        storyPanel.loadStory(story);
-        
-        cardLayout.show(mainPanel, "story");
     }
 }
