@@ -1,0 +1,240 @@
+[
+    
+{
+  "sceneId": "scene1",
+  "background": "background-prolog",
+  "characterImage": "syauqy-dialog",
+  "characterName": "Syauqy - Detektif",
+  "dialog": "Aku dapat panggilan dari Universitas Tidar untuk menangani kasus kematian seorang Mahasiswa, Korban seorang Mahasiswa jenius bernama Ahmad",
+  "nextScene": "scene1.1",
+  "setGuilty": "nayla"
+},
+
+{
+  "sceneId": "scene1.1",
+  "background": "background-prolog",
+  "characterImage": "syauqy-dialog",
+  "characterName": "Syauqy - Detektif",
+  "dialog": "Menurut info yang kudapat, Ahmad sedang berusaha untuk memecahkan suatu masalah. Ahmad tergeletak di laboratorium dengan laptop di depannya yang masih menyala",
+  "nextScene": "scene1.2"
+},
+
+{
+  "sceneId": "scene1.2",
+  "background": "background-prolog",
+  "characterImage": "syauqy-dialog",
+  "characterName": "Syauqy - Detektif",
+  "dialog": "Terdapat luka tusukan di dadanya, jadi Ahmad pasti dibunuh oleh seseorang. Aku harus menemukan pembunuhnya!",
+  "nextScene": "scene2"
+},
+
+{
+  "sceneId": "scene2",
+  "background": "background-prolog",
+  "characterImage": "syauqy-dialog",
+  "hideNameBox": true,
+  "hideDialogBox": true,
+  "managerType": "THREE_CHOICE"
+},
+
+{
+  "sceneId": "scene_bukti",
+  "background": "background-prolog",
+  "managerType": "EVIDENCE_CHOICE",
+  "hideNameBox": true,
+  "hideDialogBox": true,
+  "hideCharacter": true
+},
+
+{
+  "sceneId": "kembali-pilhan",
+  "background": "background-prolog",
+  "characterImage": "syauqy-dialog",
+  "hideNameBox": true,
+  "hideDialogBox": true,
+  "managerType": "THREE_CHOICE"
+},
+
+{
+  "sceneId": "membuka-cctv",
+  "background": "cctv-evidence",
+  "hideCharacter": true,
+  "hideNameBox": true,
+  "hideDialogBox": true,
+  "nextScene": "cctv1"
+},
+
+{
+  "sceneId": "cctv1",
+  "background": "background-prolog",
+  "characterImage": "syauqy-dialog",
+  "characterName": "Syauqy - Detektif",
+  "dialog": "Foto CCTV menunjukkan Dafa, seorang teknisi lab yang berdebat sengit dengan Ahmad. Keterangan waktunya menunjukkan sehari sebelum kematian Ahmad",
+  "nextScene": "scene_bukti"
+},
+
+{
+  "sceneId": "membuka-laptop",
+  "background": "laptop-evidence",
+  "managerType": "EVIDENCE_LAPTOP",
+  "hideCharacter": true,
+  "hideNameBox": true,
+  "hideDialogBox": true
+},
+
+{
+  "sceneId": "kembali-laptop",
+  "background": "background-prolog",
+  "managerType": "EVIDENCE_CHOICE",
+  "hideNameBox": true,
+  "hideDialogBox": true,
+  "hideCharacter": true
+},
+
+{
+  "sceneId": "bukti-file",
+  "background": "background-prolog",
+  "characterImage": "syauqy-dialog",
+  "characterName": "Syauqy - Detektif",
+  "dialog": "File TXT ini berisi log akses browser di komputer admin. Dari file ini diketahui ada 2 user yang login di hari sebelum kematian Ahmad yaitu 'L4BIB' dan user anonim",
+  "nextScene": "membuka-laptop"
+},
+
+{
+  "sceneId": "bukti-foto",
+  "background": "background-prolog",
+  "characterImage": "syauqy-dialog",
+  "characterName": "Syauqy - Detektif",
+  "dialog": "File JPEG ini menampilkan percakapan di darkweb antara user anonim dan 'Djikstra' yang membahas penjualan data mahasiswa FT Untidar",
+  "nextScene": "membuka-laptop"
+},
+
+{
+  "sceneId": "scene_saksi",
+  "background": "background-prolog",
+  "managerType": "PEOPLE_1",
+  "hideNameBox": true,
+  "hideDialogBox": true,
+  "hideCharacter": true
+},
+
+{
+  "sceneId": "kembali-saksi",
+  "background": "background-prolog",
+  "characterImage": "syauqy-dialog",
+  "hideNameBox": true,
+  "hideDialogBox": true,
+  "managerType": "THREE_CHOICE"
+},
+
+{
+  "sceneId": "pilih-hanif",
+  "background": "background-prolog",
+  "characterImage": "hanif-dialog",
+  "characterName": "Hanif - Teman Ahmad",
+  "dialog": "Ahmad sedang meneliti keamanan data kampus dan menemukan anomali. Ahmad bilang 'Kalau aku mati, berarti aku menemukan yang seharusnya tidak boleh kutemukan’",
+  "nextScene": "scene_saksi"
+},
+
+{
+  "sceneId": "pilih-nayla",
+  "background": "background-prolog",
+  "characterImage": "nayla-dialog",
+  "characterName": "Nayla - Asisten Lab",
+  "dialog": "Aku malam itu sedang bekerja di laboratorium memeriksa perangkat-perangkat yang ada, aku tidak tahu kalau malam itu terjadi pembunuhan",
+  "nextScene": "scene_saksi"
+},
+
+{
+  "sceneId": "pilih-alatas",
+  "background": "background-prolog",
+  "characterImage": "alatas-dialog",
+  "characterName": "Alatas - Ahli Jaringan",
+  "dialog": "Aku sudah menganalisa metadata dari user yang bernama ‘Djikstra’ dan berhasil menelusurinya. Aku menemukan bahwa akun 'Djikstra' itu berasal dari IP kampus dan diakses lewat akun admin fakultas. Username dari admin fakultas itu 'L4B1B’",
+  "nextScene": "scene_saksi"
+},
+
+{
+  "sceneId": "scene_tuduh",
+  "background": "background-prolog",
+  "managerType": "PEOPLE_2",
+  "hideNameBox": true,
+  "hideDialogBox": true,
+  "hideCharacter": true
+},
+
+{
+  "sceneId": "kembali-tuduh",
+  "background": "background-prolog",
+  "characterImage": "syauqy-dialog",
+  "hideNameBox": true,
+  "hideDialogBox": true,
+  "managerType": "THREE_CHOICE"
+},
+
+{
+  "sceneId": "tuduh-labib",
+  "background": "background-prolog",
+  "characterImage": "labib-dialog",
+  "characterName": "Labib - Karyawan TU",
+  "dialog": "Aku punya akun admin fakultas dengan username ‘L4BIB,’ Alatas bilang aku orang dibalik akun ‘Djikstra’ tapi itu bukan aku sumpah. Aku hanya melakukan pekerjaanku dan tidak tahu apa-apa",
+  "managerType": "TWO_CHOICE",
+  "suspectId": "labib"
+},
+
+{
+  "sceneId": "tuduh-nayla",
+  "background": "background-prolog",
+  "characterImage": "nayla-dialog",
+  "characterName": "Nayla - Asisten Lab",
+  "dialog": "Aku ada terlibat dalam kepentingan proyek di luar kampus. Aku juga punya akses penuh ke sistem login dan server fakultas karena aku seorang asisten laboratorium",
+  "managerType": "TWO_CHOICE",
+  "suspectId": "nayla"
+},
+
+{
+  "sceneId": "tuduh-dafa",
+  "background": "background-prolog",
+  "characterImage": "dafa-dialog",
+  "characterName": "Dafa - Teknisi Lab",
+  "dialog": "Ahmad itu orangnya suka buat masalah di laboratorium jadi saya ada dendam pribadi lah sama dia tapi aku tidak akan pernah berpikiran untuk membunuhnya. Aku lagi kerja di sekitaran lab pada malam itu",
+  "managerType": "TWO_CHOICE",
+  "suspectId": "dafa"
+},
+
+{
+  "sceneId": "true_ending",
+  "background": "background-prolog",
+  "characterImage": "syauqy-dialog",
+  "characterName": "Syauqy - Detektif",
+  "dialog": "Seperti biasa, tidak ada penjahat yang bisa lolos dari penyelidikanku. Akhirnya aku bisa memberikan keadilan yang setimpal bagi korban, keluarga, dab temannya. Semoga korban bisa beristirahat dengan tenang",
+  "nextScene": "ending"
+},
+
+{
+  "sceneId": "bad_ending",
+  "background": "background-prolog",
+  "characterImage": "syauqy-dialog",
+  "characterName": "Syauqy - Detektif",
+  "dialog": "Sayang sekali tebakanku salah, pelaku masih berkeliaran bebas di luar sana. Aku masih belum memberikan keadilan yang setimpal bagi korban, keluarga, dan temannya. Korban belum bisa beristirahat dengan tenang",
+  "nextScene": "ending-salah"
+},
+
+{
+  "sceneId": "ending-salah",
+  "background": "background-prolog",
+  "characterImage": "pelaku-dialog",
+  "characterName": "???",
+  "dialog": "Yes aku masih bisa bebas. Ternyata sebutan si detektif handal itu cuma omong kosong hahaha. Tidak sia-sia aku menonton film detektif kemarin",
+  "nextScene": "ending"
+},
+
+{
+  "sceneId": "ending",
+  "background": "ending-closing",
+  "hideNameBox": true,
+  "hideDialogBox": true,
+  "hideCharacter": true
+}
+
+]

@@ -1,13 +1,17 @@
 package engine;
 
-public class SuspectCharacter{
-    private boolean isGuilty; // Hanya butuh satu variabel penting ini
+// 1. Tambahkan 'extends GameCharacter' agar dikenali sebagai karakter game
+public class SuspectCharacter extends GameCharacter {
+    
+    private boolean isGuilty; 
 
-    public SuspectCharacter() {
-        this.isGuilty = false; // Default: Tidak bersalah
+    // 2. Perbaiki Constructor agar sesuai dengan panggilan di StoryPanel ("id", "image")
+    public SuspectCharacter(String characterId, String imageKey) {
+        super(characterId, imageKey); // Panggil constructor induk (GameCharacter)
+        this.isGuilty = false;        // Default: Tidak bersalah
     }
 
-    // Method untuk menandai dia pelaku (dipanggil dari JSON)
+    // Method untuk menandai dia pelaku (dipanggil dari JSON/StoryPanel)
     public void setGuilty(boolean guilty) {
         this.isGuilty = guilty;
     }
@@ -15,5 +19,16 @@ public class SuspectCharacter{
     // Method untuk mengecek (dipanggil saat tombol Tuduh ditekan)
     public boolean isGuilty() {
         return isGuilty;
+    }
+
+    // 3. Implementasi method abstrak dari GameCharacter (Wajib ada)
+    @Override
+    public void onInteraction() {
+        System.out.println("Interaksi dengan tersangka: " + characterId);
+    }
+
+    @Override
+    public String getDefaultDialog() {
+        return "Saya tidak melakukan apa-apa!";
     }
 }

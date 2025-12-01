@@ -1,7 +1,5 @@
 package engine;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class GameScene {
     public String sceneId;
@@ -17,14 +15,5 @@ public class GameScene {
     public boolean hideCharacter;    // True = Sembunyikan karakter
     public boolean hideNameBox;      // True = Sembunyikan kotak nama
     
-
-    public List<String> requiredEvidence;
-    public List<String> collectibleEvidence;
-    
-    public GameScene() {
-
-        this.requiredEvidence = new ArrayList<>();
-        this.collectibleEvidence = new ArrayList<>();
-    }
 }
 
