@@ -95,11 +95,6 @@ public class NameCharBox extends DrawableAsset {
         return isVisible;
     }
     
-    public void changeName(String newName) {
-        this.characterName = newName;
-        this.nameAnimator.setDialogText(newName);
-    }
-    
     public void cleanup() {
         nameAnimator.cleanup();
     }
