@@ -39,7 +39,7 @@ public class NameCharBox extends DrawableAsset {
     }
     
     public void show(String characterName) {
-        System.out.println("✅ NameCharBox.show() called with: " + characterName);
+        System.out.println("NameCharBox.show() called with: " + characterName);
         this.characterName = characterName;
         this.isVisible = true;
         this.nameAnimator.setDialogText(characterName);
@@ -56,15 +56,15 @@ public class NameCharBox extends DrawableAsset {
      */
     public void draw(Graphics g, int panelWidth, int panelHeight) {
         if (!isVisible) {
-            System.out.println("❌ NameCharBox not visible");
+            System.out.println("NameCharBox not visible");
             return;
         }
         if (image == null) {
-            System.out.println("❌ NameCharBox image is null");
+            System.out.println("NameCharBox image is null");
             return;
         }
         
-        System.out.println("✅ Drawing NameCharBox FULL-STRETCH");
+        System.out.println("Drawing NameCharBox FULL-STRETCH");
         
         // 1. Gambar box name FULL-STRETCH (0,0,width,height)
         g.drawImage(image, 0, 0, panelWidth, panelHeight, null);
@@ -80,7 +80,7 @@ public class NameCharBox extends DrawableAsset {
         String displayedName = nameAnimator.getDisplayedText();
         
         g.drawString(displayedName, TEXT_X, TEXT_Y);
-        System.out.println("✅ Drawing name: '" + displayedName + "' at fixed position " + TEXT_X + "," + TEXT_Y);
+        System.out.println("Drawing name: '" + displayedName + "' at fixed position " + TEXT_X + "," + TEXT_Y);
     }
     
     public void skipTyping() {

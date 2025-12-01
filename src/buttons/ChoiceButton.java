@@ -2,7 +2,6 @@ package buttons;
 
 import ImageAnimator.DrawableAsset;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class ChoiceButton extends DrawableAsset {
     private boolean showChoiceButton = false;

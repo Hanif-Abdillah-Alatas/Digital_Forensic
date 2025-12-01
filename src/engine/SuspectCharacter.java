@@ -20,15 +20,4 @@ public class SuspectCharacter extends GameCharacter {
     public boolean isGuilty() {
         return isGuilty;
     }
-
-    // 3. Implementasi method abstrak dari GameCharacter (Wajib ada)
-    @Override
-    public void onInteraction() {
-        System.out.println("Interaksi dengan tersangka: " + characterId);
-    }
-
-    @Override
-    public String getDefaultDialog() {
-        return "Saya tidak melakukan apa-apa!";
-    }
 }
