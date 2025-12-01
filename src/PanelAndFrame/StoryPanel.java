@@ -90,9 +90,7 @@ public class StoryPanel extends JPanel implements
     }
     
     private void setupGameWorld() {
-        gameState.registerCharacter(new SuspectCharacter("hanif", "hanif"));
         gameState.registerCharacter(new SuspectCharacter("nayla", "nayla"));
-        gameState.registerCharacter(new SuspectCharacter("alatas", "alatas"));
         gameState.registerCharacter(new SuspectCharacter("labib", "labib"));
         gameState.registerCharacter(new SuspectCharacter("dafa", "dafa"));
     }
