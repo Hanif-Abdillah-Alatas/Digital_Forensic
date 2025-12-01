@@ -114,7 +114,6 @@ public class StoryPanel extends JPanel implements
                     }
                 }
             }
-            System.out.println("Scene tidak ditemukan: " + nextSceneId);
         }
     }
     
@@ -143,7 +142,6 @@ public class StoryPanel extends JPanel implements
             }
             
         } catch (Exception e) {
-            System.out.println("Gagal load gambar: " + e.getMessage());
         }
         
         if (scene.hideNameBox || scene.characterName == null) {
@@ -171,7 +169,6 @@ public class StoryPanel extends JPanel implements
                 case "PEOPLE_2": currentManager = new PeopleChoice2(this); break;
                 case "TWO_CHOICE": currentManager = new TwoChoiceManager(this); break;
                 case "ONE_CHOICE": currentManager = new OneChoiceManager(this); break;
-                default: System.out.println("Manager Type tidak dikenal: " + scene.managerType);
             }
         }
         

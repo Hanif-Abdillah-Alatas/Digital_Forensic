@@ -30,9 +30,7 @@ public abstract class ChoiceManager implements ChoiceButton.ChoiceActionListener
 
             if (button.checkClick(p, panelWidth, panelHeight)) {
 
-                handleButtonClick(button);
-                
-                if (panelListener != null) panelListener.onChoiceClicked();
+                handleButtonClick(button);     
                 
                 return; 
             }
@@ -47,9 +45,7 @@ public abstract class ChoiceManager implements ChoiceButton.ChoiceActionListener
     }
     
     @Override
-    public void onChoiceClicked() {
-        panelListener.onChoiceClicked();
-    }
+    public void onChoiceClicked() {}
     
     public void showAll(boolean show) {
         for (ChoiceButton button : choiceButtons) {
