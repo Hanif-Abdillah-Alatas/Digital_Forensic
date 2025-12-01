@@ -130,18 +130,14 @@ public class StoryPanel extends JPanel implements
             }
         }
         
-        try {
-            if (scene.background != null) {
+        if (scene.background != null) {
                 background = new DrawableAsset(scene.background);
-            }
+        }
             
-            if (scene.hideCharacter) {
+        if (scene.hideCharacter) {
                 fullScene = null;
-            } else if (scene.characterImage != null) {
+        } else if (scene.characterImage != null) {
                 fullScene = new DrawableAsset(scene.characterImage);
-            }
-            
-        } catch (Exception e) {
         }
         
         if (scene.hideNameBox || scene.characterName == null) {
