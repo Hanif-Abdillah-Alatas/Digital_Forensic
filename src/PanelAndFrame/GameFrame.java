@@ -43,7 +43,7 @@ public class GameFrame extends JFrame {
     
     public void switchToStory() {
         // 1. Load data default
-        List<GameScene> story = StoryLoader.loadStory("contoh.json");
+        List<GameScene> story = StoryLoader.loadStory("Story.json");
         
         // 2. Masukkan data ke StoryPanel yang sudah ada
         storyPanel.loadStory(story); 

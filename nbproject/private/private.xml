@@ -2,6 +2,22 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Praktikum-PBO/Game-Engine/src/engine/GameScene.java</file>
+            <file>file:/D:/Praktikum-PBO/Game-Engine/src/engine/SuspectCharacter.java</file>
+            <file>file:/D:/Praktikum-PBO/Game-Engine/src/text/FontManager.java</file>
+            <file>file:/D:/Praktikum-PBO/Game-Engine/src/text/DialogText.java</file>
+            <file>file:/D:/Praktikum-PBO/Game-Engine/src/text/TypingAnimator.java</file>
+            <file>file:/D:/Praktikum-PBO/Game-Engine/src/Main.java</file>
+            <file>file:/D:/Praktikum-PBO/Game-Engine/src/buttons/TwoChoiceManager.java</file>
+            <file>file:/D:/Praktikum-PBO/Game-Engine/src/buttons/PeopleChoice2.java</file>
+            <file>file:/D:/Praktikum-PBO/Game-Engine/src/engine/GameCharacter.java</file>
+            <file>file:/D:/Praktikum-PBO/Game-Engine/src/engine/GameStateManager.java</file>
+            <file>file:/D:/Praktikum-PBO/Game-Engine/src/engine/StoryLoader.java</file>
+            <file>file:/D:/Praktikum-PBO/Game-Engine/src/PanelAndFrame/StoryPanel.java</file>
+            <file>file:/D:/Praktikum-PBO/Game-Engine/src/PanelAndFrame/GameFrame.java</file>
+            <file>file:/D:/Praktikum-PBO/Game-Engine/src/buttons/ChoiceButton.java</file>
+            <file>file:/D:/Praktikum-PBO/Game-Engine/src/buttons/ChoiceManager.java</file>
+        </group>
     </open-files>
 </project-private>
