@@ -44,7 +44,6 @@ public class ImageManager {
         try {
             return ImageIO.read(ImageManager.class.getResource(path));
         } catch (IOException | IllegalArgumentException e) {
-            System.out.println("Gagal load gambar: " + path);
             return null;
         }
     }
