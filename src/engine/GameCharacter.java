@@ -4,7 +4,6 @@ import ImageAnimator.DrawableAsset;
 
 public abstract class GameCharacter extends DrawableAsset {
     protected String characterId;
-    protected String displayName;
     
     public GameCharacter(String characterId, String imageKey) {
         super(imageKey);
@@ -14,6 +13,4 @@ public abstract class GameCharacter extends DrawableAsset {
     
     // --- GETTERS & SETTERS ---
     public String getCharacterId() { return characterId; }
-    public String getDisplayName() { return displayName; }
-    
 }

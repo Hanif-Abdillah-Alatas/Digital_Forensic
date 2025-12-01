@@ -81,9 +81,6 @@ public class DialogBoxAnimator {
     
     // --- Getter Publik ---
     
-    /**
-     * Mengembalikan gambar frame dialog box saat ini untuk digambar di panel.
-     */
     public BufferedImage getCurrentDialogBox() {
         return currentDialogBox;
     }
