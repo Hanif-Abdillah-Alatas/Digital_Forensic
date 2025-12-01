@@ -57,9 +57,6 @@ public abstract class ChoiceManager implements ChoiceButton.ChoiceActionListener
         choiceButtons.add(new ChoiceButton(this, imageKey));
     }
     
-    protected void addButton(ChoiceButton button) {
-        choiceButtons.add(button);
-    }
     
     public List<ChoiceButton> getChoiceButtons() {
         return choiceButtons;

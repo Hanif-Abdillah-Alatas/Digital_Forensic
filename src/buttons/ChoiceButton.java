@@ -12,10 +12,6 @@ public class ChoiceButton extends DrawableAsset {
         void onChoiceClicked();
     }
     
-    public ChoiceButton(ChoiceActionListener listener) {
-        this(listener, "choice1-button");
-    }
-    
     public ChoiceButton(ChoiceActionListener listener, String imageKey) {
         super(imageKey);
     }
