@@ -12,8 +12,8 @@ public class TwoChoiceManager extends ChoiceManager {
     
     @Override
     protected void setupButtons() {
-        addButton("choice4-button"); // Tombol TUDUH (Asumsi gambar choice4 = Ya/Tuduh)
-        addButton("choice5-button"); // Tombol KEMBALI (Asumsi gambar choice5 = Tidak/Kembali)
+        addButton("choice4-button");
+        addButton("choice5-button");
     }
     
     @Override
@@ -24,32 +24,22 @@ public class TwoChoiceManager extends ChoiceManager {
             StoryPanel panel = (StoryPanel) panelListener;
             
             switch(buttonIndex) {
-                case 0: // --- LOGIKA TUDUH ---
-                    // 1. Ambil ID tersangka dari Scene saat ini
+                case 0:
                     String suspectId = panel.getCurrentScene().suspectId;
-                    
                     if (suspectId != null) {
-                        // 2. Cek di GameState apakah dia Guilty
                         GameCharacter character = panel.getGameState().getCharacter(suspectId);
                         if (character instanceof SuspectCharacter) {
                             boolean isGuilty = ((SuspectCharacter) character).isGuilty();
-                            
                             if (isGuilty) {
-                                System.out.println("✅ MENANG! Pelaku tertangkap: " + suspectId);
                                 panel.onSceneChangeRequest("true_ending");
                             } else {
-                                System.out.println("❌ SALAH TUDUH! Bukan dia pelakunya.");
                                 panel.onSceneChangeRequest("bad_ending");
                             }
                         }
-                    } else {
-                        System.out.println("⚠️ Error: Tidak ada suspectId di scene ini.");
                     }
                     break;
                     
-                case 1: // --- LOGIKA KEMBALI ---
-                    System.out.println("🔙 Kembali memilih tersangka...");
-                    // Kembali ke scene pemilihan orang
+                case 1:
                     panel.onSceneChangeRequest("scene_tuduh"); 
                     break;
             }

@@ -28,8 +28,6 @@ import engine.GameScene;
 import engine.GameStateManager;
 import engine.SuspectCharacter;
 
-// [HAPUS KELAS StaticAsset DISINI KARENA TIDAK DIPAKAI]
-
 public class StoryPanel extends JPanel implements 
     TypingAnimator.TypingCompleteListener,
     NameCharBox.NameAnimationListener,
@@ -39,8 +37,6 @@ public class StoryPanel extends JPanel implements
     private List<GameScene> currentStory;
     private GameScene currentScene;
     
-    // Komponen Visual
-    // [UBAH TIPE DATA JADI DrawableAsset]
     private DrawableAsset background; 
     private DrawableAsset fullScene; 
     
@@ -62,26 +58,26 @@ public class StoryPanel extends JPanel implements
         setOpaque(false);
         
         addMouseListener(new MouseAdapter() {
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            if (currentManager != null && typingAnimator.isTypingComplete()) {
-                currentManager.checkAllClicks(e.getPoint(), getWidth(), getHeight());
-                return;
-            }
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (currentManager != null && typingAnimator.isTypingComplete()) {
+                    currentManager.checkAllClicks(e.getPoint(), getWidth(), getHeight());
+                    return;
+                }
 
-            if (!typingAnimator.isTypingComplete()) {
-                typingAnimator.skipTyping();
-            } else if (!nameCharBox.isNameTypingComplete()) {
-                nameCharBox.skipTyping();
-            } else {
-                if (currentScene != null && currentScene.nextScene != null && !currentScene.nextScene.isEmpty()) {
-                    if (currentScene.managerType == null) {
-                        onSceneChangeRequest(currentScene.nextScene);
+                if (!typingAnimator.isTypingComplete()) {
+                    typingAnimator.skipTyping();
+                } else if (!nameCharBox.isNameTypingComplete()) {
+                    nameCharBox.skipTyping();
+                } else {
+                    if (currentScene != null && currentScene.nextScene != null && !currentScene.nextScene.isEmpty()) {
+                        if (currentScene.managerType == null) {
+                            onSceneChangeRequest(currentScene.nextScene);
+                        }
                     }
                 }
             }
-        }
-    });
+        });
         
         addMouseMotionListener(new MouseAdapter() {
             @Override
@@ -123,9 +119,7 @@ public class StoryPanel extends JPanel implements
     }
     
     @Override
-    public void onChoiceClicked() {
-        // Biarkan kosong
-    }
+    public void onChoiceClicked() {}
      
     public void showScene(GameScene scene) {
         this.currentScene = scene;
@@ -139,14 +133,12 @@ public class StoryPanel extends JPanel implements
         
         try {
             if (scene.background != null) {
-                // [GANTI StaticAsset JADI DrawableAsset]
                 background = new DrawableAsset(scene.background);
             }
             
             if (scene.hideCharacter) {
                 fullScene = null;
             } else if (scene.characterImage != null) {
-                // [GANTI StaticAsset JADI DrawableAsset]
                 fullScene = new DrawableAsset(scene.characterImage);
             }
             
@@ -208,7 +200,6 @@ public class StoryPanel extends JPanel implements
         g.fillRect(0, 0, w, h);
 
         if (background != null) background.draw(g, 0, 0, w, h);
-        
         if (fullScene != null && (currentScene == null || !currentScene.hideCharacter)) {
             fullScene.draw(g, 0, 0, w, h);
         }

@@ -36,6 +36,4 @@ public class PeopleChoice1 extends ChoiceManager {
             }
         }
     }
-    
-    // METHOD onChoiceClicked YANG LAMA DIHAPUS KARENA TIDAK PERLU
 }

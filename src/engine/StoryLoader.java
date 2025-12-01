@@ -1,4 +1,3 @@
-// engine/StoryLoader.java
 package engine;
 
 import com.google.gson.Gson;
