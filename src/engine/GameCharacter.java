@@ -1,12 +1,12 @@
 package engine;
 
-import ImageAnimator.DrawableAsset;
 
-public abstract class GameCharacter extends DrawableAsset {
-    protected String characterId;
+
+public abstract class GameCharacter {
+    private String characterId;
     
-    public GameCharacter(String characterId, String imageKey) {
-        super(imageKey);
+    public GameCharacter(String characterId) {
+
         this.characterId = characterId;
         System.out.println("Character created: " + characterId);
     }

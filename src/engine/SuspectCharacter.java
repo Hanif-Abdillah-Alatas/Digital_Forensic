@@ -3,8 +3,8 @@ package engine;
 public class SuspectCharacter extends GameCharacter {
     private boolean isGuilty; 
 
-    public SuspectCharacter(String characterId, String imageKey) {
-        super(characterId, imageKey);
+    public SuspectCharacter(String characterId) {
+        super(characterId);
         this.isGuilty = false;
     }
 
