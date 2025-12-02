@@ -3,7 +3,7 @@ package engine;
 
 
 public abstract class GameCharacter {
-    private String characterId;
+    protected String characterId;
     
     public GameCharacter(String characterId) {
 
