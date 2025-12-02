@@ -47,9 +47,7 @@ public class NameCharBox extends DrawableAsset {
         this.nameAnimator.skipTyping();
     }
     
-    /**
-     * Gambar name box FULL-STRETCH dan teks nama di posisi fix
-     */
+    @Override
     public void draw(Graphics g, int panelWidth, int panelHeight) {
         if (!isVisible || image == null) return;
         

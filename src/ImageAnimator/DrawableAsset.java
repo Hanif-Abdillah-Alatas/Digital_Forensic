@@ -16,6 +16,10 @@ public class DrawableAsset {
         }
     }
     
+    public void draw(Graphics g, int panelWidth, int panelHeight) {
+        draw(g, 0, 0, panelWidth, panelHeight);
+    }
+    
     public BufferedImage getImage() {
         return image;
     }

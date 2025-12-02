@@ -42,6 +42,7 @@ public class ChoiceButton extends DrawableAsset {
         return alpha > 0;
     }
     
+    @Override
     public void draw(Graphics g, int panelWidth, int panelHeight) {
         if (!showChoiceButton || image == null) return;
         
