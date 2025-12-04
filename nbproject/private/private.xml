@@ -18,6 +18,13 @@
             <file>file:/D:/Praktikum-PBO/Game-Engine/src/PanelAndFrame/GameFrame.java</file>
             <file>file:/D:/Praktikum-PBO/Game-Engine/src/buttons/ChoiceButton.java</file>
             <file>file:/D:/Praktikum-PBO/Game-Engine/src/buttons/ChoiceManager.java</file>
+            <file>file:/D:/Praktikum-PBO/Game-Engine/src/ImageAnimator/NameCharBox.java</file>
+            <file>file:/D:/Praktikum-PBO/Game-Engine/src/PanelAndFrame/OpeningPanel.java</file>
+            <file>file:/D:/Praktikum-PBO/Game-Engine/src/ImageAnimator/ImageManager.java</file>
+            <file>file:/D:/Praktikum-PBO/Game-Engine/src/ImageAnimator/DrawableAsset.java</file>
+            <file>file:/D:/Praktikum-PBO/Game-Engine/src/ImageAnimator/DialogBoxAnimator.java</file>
+            <file>file:/D:/Praktikum-PBO/Game-Engine/src/buttons/EvidenceChoice.java</file>
+            <file>file:/D:/Praktikum-PBO/Game-Engine/src/buttons/ThreeChoiceManager.java</file>
         </group>
     </open-files>
 </project-private>

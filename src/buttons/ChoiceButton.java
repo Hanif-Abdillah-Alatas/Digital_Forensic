@@ -12,7 +12,7 @@ public class ChoiceButton extends DrawableAsset {
         void onChoiceClicked();
     }
     
-    public ChoiceButton(ChoiceActionListener listener, String imageKey) {
+    public ChoiceButton(String imageKey) {
         super(imageKey);
     }
     
